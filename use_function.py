@@ -1,12 +1,25 @@
+import os
+import pickle
+import json
+
+
 def balance_fun():
     balance = 0.0
     buy_story = []
+    BALANCE_FILE_NAME = 'balance.data'
+    BUY_FILE_NAME = 'buy_story.data'
+
+    if os.path.exists(BALANCE_FILE_NAME):
+        with open(BALANCE_FILE_NAME, 'r') as f:
+            balance = json.load(f)
+    if os.path.exists(BUY_FILE_NAME):
+        with open(BUY_FILE_NAME, 'rb') as f:
+            buy_story = pickle.load(f)
     def refill(balance):
         ref = float(input('enter sum: '))
         balance += ref
         return balance
     pass
-
 
     def yes_buy(balance):
         buy = float(input('enter buy sum:'))
@@ -37,7 +50,12 @@ def balance_fun():
             print(buy_story)
             pass
         elif choice == '4':
+            with open(BALANCE_FILE_NAME, 'w') as f:
+                json.dump(balance, f)
+                with open(BUY_FILE_NAME, 'wb') as f:
+                    pickle.dump(buy_story, f)
             break
         else:
             print('Неверный пункт меню')
     return
+
