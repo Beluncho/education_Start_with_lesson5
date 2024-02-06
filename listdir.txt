@@ -1,0 +1,3 @@
+{"files": ["def_for_manager.py", "file_manager.py", "LICENSE", "listdir.txt",
+"README.md", "test_save_hand_made.py", "use_function.py", "victory.py"],
+"dirs": ["for example", "__pycache__"]}
