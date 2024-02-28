@@ -26,10 +26,7 @@ def view_dir():
 
 
 def save_file():
-    """
-
-    :return: словарь фалы:значения
-    """
+    
     with os.scandir(path='.') as it:
 
         entry_list = []

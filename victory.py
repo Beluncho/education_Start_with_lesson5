@@ -1,3 +1,6 @@
+import random
+
+
 def victory():
     name = input('Введите своё имя: ')
     print('Доброго времени суток,', name, ', это историческая викторина')
@@ -33,22 +36,21 @@ def victory():
         ball = 0
         max_ball = 5
         print('Начать викторину/начать заново: да/нет ?')
+
         answer01 = input('Ведите ответ: ')
 
         if answer01 == answer0:
-            import random
-
             answers = random.sample(head, 5)
 
             for i in range(len(answers)):
                 if answers[i] == 1:
                     answer1 = input('Укажите год начала правления Николая II А.Р: ')  # answer 01.11.1894
-
-                    if answer1 == last_emperor:
-                        ball += 1
-                    else:
-                        ball += 0
-                        print('Правильный ответ: первое ноября 1894 года')
+                    ball += 1 if answer1 == last_emperor else print('Правильный ответ: первое ноября 1894 года')
+                    # if answer1 == last_emperor:
+                    #     ball += 1
+                    # else:
+                    #     ball += 0
+                    #     print('Правильный ответ: первое ноября 1894 года')
                 if answers[i] == 2:
                     answer2 = input('Укажите год начала правления Керенского А.Ф: ')  # answer 20.06.1917
 
@@ -133,3 +135,4 @@ def victory():
     else:
         print('end')
     return
+
