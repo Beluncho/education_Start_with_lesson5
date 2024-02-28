@@ -1,6 +1,11 @@
-import os.path
+import json
+import os
 import shutil
 import sys
+
+import use_function
+import victory
+from def_for_manager import view_file, view_dir, save_dir, save_file
 
 while True:
     print('1. Add new folder')
@@ -41,22 +46,27 @@ while True:
 
     elif choice == '5':
 
-        path = os.listdir(path=".")
-        for el in path:
-            if os.path.isdir(el):
-                print(el)
-
+        view_dir()
         pass
 
     elif choice == '6':
-        # print(glob.glob('C:\\Users\\User\\PycharmProjects\\python educations\\education_Start_with_lesson5\\*.*'))
-        # print(glob.glob('C:\\Users\\User\\PycharmProjects\\python educations\\education_Start_with_lesson5\\.*'))
-        import os
+        while True:
+            print('1.View file')
+            print('2. Save contents of the working directory in listdir.txt')
+            print('3. Return in file manager')
+            choice_in = input('Choice item: ')
+            if choice_in == '1':
+                view_file()
+            elif choice_in == '2':
+                save_listdir = {**save_file(),
+                                **save_dir()}
 
-        with os.scandir(path='.') as it:
-            for entry in it:
-                if not entry.name.startswith('.') and entry.is_file():
-                    print(entry.name)
+                with open('listdir.txt', 'w') as f:
+                    json.dump(save_listdir, f)
+
+            elif choice_in == '3':
+                break
+            else:
                 pass
         pass
 
@@ -67,15 +77,12 @@ while True:
         print('Beluncho')
         pass
     elif choice == '9':
-        import victory
         victory.victory()
         pass
     elif choice == '10':
-        import use_function
         use_function.balance_fun()
         pass
     elif choice == '11':
-        import os
         directory = os.getcwd()
         print(directory)
         os.chdir(input('new directory: '))
