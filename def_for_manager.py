@@ -1,5 +1,6 @@
 import os
 
+
 def view_file():
     """
 
@@ -25,10 +26,7 @@ def view_dir():
 
 
 def save_file():
-    """
-
-    :return: словарь файлы:значения
-    """
+    
     with os.scandir(path='.') as it:
 
         entry_list = []

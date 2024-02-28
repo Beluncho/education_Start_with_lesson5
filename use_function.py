@@ -1,7 +1,9 @@
 import os
 import pickle
 import json
+
 from decorator_example import add_sep
+
 
 
 def balance_fun():
@@ -16,12 +18,14 @@ def balance_fun():
     if os.path.exists(BUY_FILE_NAME):
         with open(BUY_FILE_NAME, 'rb') as f:
             buy_story = pickle.load(f)
+
     @add_sep
     def refill(balance):
         ref = float(input('enter sum: '))
         balance += ref
         return balance
     pass
+
 
     @add_sep
     def yes_buy(balance):
@@ -67,3 +71,4 @@ def balance_fun():
         else:
             print('Неверный пункт меню')
     return
+
